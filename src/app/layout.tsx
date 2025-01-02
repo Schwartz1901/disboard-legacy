@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/navbar";
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="relative min-h-screen flex bg-center bg-cover bg-fixed" style={{ backgroundImage: 'url(/images/home_background.png)' }}>
+          <Navbar />
+          <div className="w-16 h-16 border border-gray-500 top-0 right-0 rounded-full absolute mx-8 mt-4">
+            <img src="/images/newyear.jpg" alt="logo" className="rounded-full" />
+          </div>
+          <div className="flex-grow ml-64 p-8 mr-32 mt-8 rounded-[50px] bg-opacity-50 relative z-10">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
